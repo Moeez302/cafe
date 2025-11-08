@@ -94,6 +94,7 @@
         }
 /* Go Up Button */
   #goTopBtn {
+    display: none;
      position: fixed;
     bottom: 30px;
     right: 30px;
@@ -986,16 +987,21 @@
                 }
             });
         });
-          const goTopBtn = document.getElementById("goTopBtn");
+         const goTopBtn = document.getElementById("goTopBtn");
 
-  window.addEventListener("scroll", () => {
-    goTopBtn.style.display = window.scrollY > 400 ? "flex" : "none";
-  });
+// Hide it immediately when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  goTopBtn.style.display = "none";
+});
 
-  goTopBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+window.addEventListener("scroll", () => {
+  goTopBtn.style.display = window.scrollY > 400 ? "flex" : "none";
+});
+
+goTopBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
     </script>
 </body>
 </html>
